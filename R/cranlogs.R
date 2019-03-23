@@ -7,7 +7,7 @@
 #' @importFrom jsonlite fromJSON
 NULL
 
-base_url  <- "http://cranlogs.r-pkg.org/"
+base_url  <- "https://cranlogs.r-pkg.org/"
 daily_url <- paste0(base_url, "downloads/daily/")
 top_url   <- paste0(base_url, "top/")
 
@@ -78,7 +78,7 @@ cran_downloads <- function(packages = NULL,
     ppackages <- paste(packages, collapse = ",")
     ppackages <- paste0("/", ppackages)
   }
-
+print(daily_url)
   req <- GET(paste0(daily_url, interval, ppackages))
   stop_for_status(req)
   r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
